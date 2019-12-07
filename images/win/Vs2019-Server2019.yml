@@ -16,11 +16,13 @@ steps:
     command: 'install'
     installPackageId: 'packer'
 
-- task: PowerShell@2
+- 
+  task: PowerShell@2
   inputs:
     filePath: 'helpers/CreateAzureVMFromPackerTemplate.ps1'
 
-- task: PowerShell@2
+- 
+  task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: 'GenerateResourcesAndImage -SubscriptionId db75fe6b-48a1-468c-8507-7a8fea61c1e8 -ResourceGroupName "vs2019-server2019-agent-pool" -ImageGenerationRepositoryRoot $(System.DefaultWorkingDirectory) -ImageType VS2019 -AzureLocation "East US"'
