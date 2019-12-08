@@ -141,7 +141,7 @@ Function GenerateResourcesAndImage {
     New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $storageAccountName -Location $AzureLocation -SkuName "Standard_LRS"
 
     $spDisplayName = [System.GUID]::NewGuid().ToString().ToUpper()
-    $sp = New-AzureRmADServicePrincipal -DisplayName $spDisplayName -Password (ConvertTo-SecureString $ServicePrincipalClientSecret -AsPlainText -Force)
+    $sp = New-AzADServicePrincipal -DisplayName $spDisplayName
 
     $spAppId = $sp.ApplicationId
     $spClientId = $sp.ApplicationId
