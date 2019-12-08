@@ -10,9 +10,6 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: CmdLine@2
-  inputs:
-    script: 'cd C:\Modules\ && dir'
 - 
   task: AzurePowerShell@4
   inputs:
