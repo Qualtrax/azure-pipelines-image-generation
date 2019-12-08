@@ -19,6 +19,6 @@ steps:
     Inline: |
       Enable-AzureRmAlias;
       . "$(System.DefaultWorkingDirectory)\helpers\GenerateResourcesAndImage.ps1";
-      GenerateResourcesAndImage -SubscriptionId "db75fe6b-48a1-468c-8507-7a8fea61c1e8" -ResourceGroupName "vs2019-agent-pool" -ImageGenerationRepositoryRoot $(System.DefaultWorkingDirectory) -ImageType VS2019 -AzureLocation "East US"
+      GenerateResourcesAndImage -SubscriptionId "db75fe6b-48a1-468c-8507-7a8fea61c1e8" -ResourceGroupName "vs2019-agent-pool" -ImageGenerationRepositoryRoot $(System.DefaultWorkingDirectory) -ImageType VS2019 -AzureLocation "East US" -Force
     azurePowerShellVersion: 'LatestVersion'
   continueOnError: true
