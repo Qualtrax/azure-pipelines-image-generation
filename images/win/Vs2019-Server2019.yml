@@ -20,6 +20,7 @@ steps:
     ScriptType: 'InlineScript'
     workingDirectory: '$(System.DefaultWorkingDirectory)'
     Inline: |
+      ls C:\Modules\;
       Get-Module -ListAvailable;
       Import-Module -Name C:\Modules\azurerm_6.7.0\AzureRM\6.7.0\AzureRM.psd1 -Global;
       . "$(System.DefaultWorkingDirectory)\helpers\GenerateResourcesAndImage.ps1";
