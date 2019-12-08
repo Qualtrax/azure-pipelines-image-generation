@@ -141,7 +141,15 @@ Function GenerateResourcesAndImage {
     New-AzureRmStorageAccount -ResourceGroupName $ResourceGroupName -AccountName $storageAccountName -Location $AzureLocation -SkuName "Standard_LRS"
 
     $spDisplayName = [System.GUID]::NewGuid().ToString().ToUpper()
-    $sp = New-AzADServicePrincipal -DisplayName $spDisplayName
+
+    $credProps = @{
+        StartDate = Get-Date
+        EndDate = (Get-Date).AddYears(1)
+        Password = $ServicePrincipalClientSecret
+    }
+    $credentials = New-Object Microsoft.Azure.Commands.ActiveDirectory.PSADPasswordCredential -Property $credProps
+
+    $sp = New-AzAdServicePrincipal -DisplayName $spDisplayName -PasswordCredential $credentials
 
     $spAppId = $sp.ApplicationId
     $spClientId = $sp.ApplicationId
